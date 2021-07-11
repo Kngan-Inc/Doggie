@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/search_navigation"
+    app:startDestination="@id/searchFragment">
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.doggie.app.view.SearchFragment"
+        android:label="@string/search"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_searchFragment2_to_searchOneFragment"
+            app:destination="@id/searchOneFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchOneFragment"
+        android:name="com.doggie.app.view.SearchOneFragment"
+        android:label="fragment search one"
+        tools:layout="@layout/fragment_search_one" />
+</navigation>

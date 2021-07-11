@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/chat_navigation"
+    app:startDestination="@id/chatFragment2">
+
+    <fragment
+        android:id="@+id/chatFragment2"
+        android:name="com.doggie.app.view.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" >
+        <action
+            android:id="@+id/action_chatFragment2_to_chatOneFragment"
+            app:destination="@id/chatOneFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/chatOneFragment"
+        android:name="com.doggie.app.view.ChatOneFragment"
+        android:label="fragment_chat_one"
+        tools:layout="@layout/fragment_chat_one" />
+
+</navigation>
