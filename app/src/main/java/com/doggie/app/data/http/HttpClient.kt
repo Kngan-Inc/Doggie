@@ -1,4 +1,4 @@
-package com.doggie.app.http
+package com.doggie.app.data.http
 
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.doggie.app.DoggieApp

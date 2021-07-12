@@ -3,8 +3,8 @@ package com.doggie.app
 import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
-import com.doggie.app.http.MainRepository
-import com.doggie.app.http.appService
+import com.doggie.app.data.repository.MainRepository
+import com.doggie.app.data.http.appService
 
 class DoggieApp : Application() {
     companion object {

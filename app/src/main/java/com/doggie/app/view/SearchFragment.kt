@@ -7,11 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.doggie.app.databinding.FragmentSearchBinding
 import com.doggie.app.epoxy.controller.SelectionController
 import com.seanghay.statusbar.statusBar
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 
 class SearchFragment : Fragment() {
@@ -20,10 +23,7 @@ class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
     private val controller by lazy {
-        SelectionController(
-            navController = findNavController(),
-            viewModel = viewModel
-        )
+        SelectionController()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,9 +53,11 @@ class SearchFragment : Fragment() {
     }
 
     private fun initObservation (){
-        viewModel.pagedList.observe(viewLifecycleOwner, {
-            controller.submitList(it)
-        })
+        lifecycleScope.launch {
+            viewModel.passengers.collectLatest { pagedData ->
+
+            }
+        }
     }
     private fun initView() {
         binding.recyclerView.setController(controller = controller)
