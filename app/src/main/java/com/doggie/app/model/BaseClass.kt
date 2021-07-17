@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class BaseClass<T>(
-    @SerializedName("data")
+    @SerializedName("message")
     val message: T,
     val status: String
 )

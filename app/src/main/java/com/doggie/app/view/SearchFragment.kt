@@ -5,16 +5,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.doggie.app.R
 import com.doggie.app.databinding.FragmentSearchBinding
 import com.doggie.app.epoxy.controller.SelectionController
+import com.doggie.app.util.ItemDecoration
 import com.seanghay.statusbar.statusBar
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
+import www.sanju.motiontoast.MotionToast
 
 
 class SearchFragment : Fragment() {
@@ -28,7 +28,7 @@ class SearchFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        statusBar.light(false).color(Color.TRANSPARENT)
+//        statusBar.light(true).color(Color.TRANSPARENT)
     }
 
     override fun onCreateView(
@@ -49,17 +49,36 @@ class SearchFragment : Fragment() {
     }
 
     private fun initAction() {
-
     }
 
-    private fun initObservation (){
-        lifecycleScope.launch {
-            viewModel.passengers.collectLatest { pagedData ->
+    private fun initObservation() {
+        viewModel.doggies.observe(viewLifecycleOwner, controller::submitList)
+        viewModel.errorMessage.observe(viewLifecycleOwner, {
+            MotionToast.createToast(
+                requireActivity(),
+                "Failed ☹️",
+                it,
+                MotionToast.TOAST_ERROR,
+                MotionToast.GRAVITY_BOTTOM,
+                MotionToast.LONG_DURATION,
+                ResourcesCompat.getFont(requireContext(), R.font.helvetica_regular),
+            )
 
-            }
-        }
+        })
     }
+
     private fun initView() {
+
+        val spanCount = 2 // 3 columns
+        val spacing = 10 // 50px
+        val includeEdge = true
+
+        val layoutManager = GridLayoutManager(context, spanCount)
+        controller.spanCount = spanCount
+        layoutManager.spanSizeLookup = controller.spanSizeLookup
+        binding.recyclerView.layoutManager = layoutManager
         binding.recyclerView.setController(controller = controller)
+        binding.recyclerView.addItemDecoration(ItemDecoration(spanCount, spacing, includeEdge))
     }
+
 }

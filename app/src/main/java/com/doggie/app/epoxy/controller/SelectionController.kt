@@ -1,30 +1,53 @@
 package com.doggie.app.epoxy.controller
 
-import com.airbnb.epoxy.EpoxyModel
-import com.airbnb.epoxy.paging.PagedListEpoxyController
-import com.doggie.app.epoxy.model.SelectionItemModel_
-import com.doggie.app.model.Passenger
+import com.airbnb.epoxy.EpoxyController
+import com.airbnb.epoxy.carousel
+import com.airbnb.epoxy.group
+import com.doggie.app.R
+import com.doggie.app.epoxy.model.DoggieItemModel_
+import com.doggie.app.epoxy.model.doggieItem
+import java.util.concurrent.CopyOnWriteArrayList
 
-class SelectionController : PagedListEpoxyController<Passenger>() {
-    override fun buildItemModel(currentPosition: Int, item: Passenger?): EpoxyModel<*> {
-        return if (item == null) {
-            SelectionItemModel_()
-                .id(-currentPosition)
-                .title("loading $currentPosition")
-                .listener { }
-        } else {
-            SelectionItemModel_()
-                .id(item._id)
-                .title(item.airline.logo)
-                .listener { }
+class SelectionController : EpoxyController() {
+
+    fun submitList(list: Collection<String>) {
+        doggies.clear()
+        doggies.addAll(list)
+        requestModelBuild()
+    }
+
+    private val doggies: CopyOnWriteArrayList<String> = CopyOnWriteArrayList()
+
+    override fun buildModels() {
+        val models: ArrayList<DoggieItemModel_> = ArrayList()
+        if (doggies.isNotEmpty()) {
+
+            doggies.map {
+                models.add(
+                    DoggieItemModel_()
+                        .id(it)
+                        .url(it)
+                )
+            }
+            group {
+                id("group")
+                layout(R.layout.group_layout)
+                carousel {
+                    id("carousel")
+                    models(models)
+                    numViewsToShowOnScreen(2f)
+                    paddingDp(4)
+                }
+            }
+
+            doggies.map {
+                doggieItem {
+                    id(it)
+                    url(it)
+                }
+            }
         }
-    }
 
-    override fun addModels(models: List<EpoxyModel<*>>) {
-        super.addModels(models)
-    }
 
-    override fun onExceptionSwallowed(exception: RuntimeException) {
-        throw exception
     }
 }

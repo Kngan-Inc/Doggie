@@ -1,7 +1,6 @@
 package com.doggie.app.data.http
 
-import androidx.paging.DataSource
-import com.doggie.app.model.Dog
+import com.doggie.app.model.BaseClass
 import com.doggie.app.model.PassengersResponse
 import retrofit2.Response
 import retrofit2.http.GET
@@ -14,5 +13,8 @@ interface AppService {
         @Query("page") page: Int,
         @Query("size") size: Int = 10
     ): Response<PassengersResponse>
+
+    @GET("breed/hound/images/random/30")
+    suspend fun getDoggie(): Response<BaseClass<ArrayList<String>>>
 
 }
