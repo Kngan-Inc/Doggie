@@ -1,6 +1,5 @@
 package com.doggie.app.view
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,9 +10,8 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.doggie.app.R
 import com.doggie.app.databinding.FragmentSearchBinding
-import com.doggie.app.epoxy.controller.SelectionController
+import com.doggie.app.epoxy.controller.DoggieController
 import com.doggie.app.util.ItemDecoration
-import com.seanghay.statusbar.statusBar
 import www.sanju.motiontoast.MotionToast
 
 
@@ -23,7 +21,7 @@ class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
     private val controller by lazy {
-        SelectionController()
+        DoggieController(context = requireContext())
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,17 +66,12 @@ class SearchFragment : Fragment() {
     }
 
     private fun initView() {
-
-        val spanCount = 2 // 3 columns
-        val spacing = 10 // 50px
-        val includeEdge = true
-
+        val spanCount = 2
         val layoutManager = GridLayoutManager(context, spanCount)
         controller.spanCount = spanCount
         layoutManager.spanSizeLookup = controller.spanSizeLookup
         binding.recyclerView.layoutManager = layoutManager
         binding.recyclerView.setController(controller = controller)
-        binding.recyclerView.addItemDecoration(ItemDecoration(spanCount, spacing, includeEdge))
+        binding.recyclerView.addItemDecoration(ItemDecoration(spanCount, 12, true))
     }
-
 }
