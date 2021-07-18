@@ -1,39 +1,47 @@
 package com.doggie.app.epoxy.controller
 
 import android.content.Context
+import androidx.navigation.NavController
 import com.airbnb.epoxy.EpoxyController
 import com.airbnb.epoxy.carousel
 import com.airbnb.epoxy.group
 import com.doggie.app.R
 import com.doggie.app.epoxy.model.DoggieItemModel_
 import com.doggie.app.epoxy.model.doggieItem
+import com.doggie.app.epoxy.model.myCarousel
 import com.doggie.app.epoxy.model.titleView
 import java.util.concurrent.CopyOnWriteArrayList
 
 class DoggieController(
-    private var context: Context
+    private var context: Context,
+    private var navController: NavController
 ) : EpoxyController() {
 
-    fun submitList(list: Collection<String>) {
+    fun submitList(list: ArrayList<String>) {
         doggies.clear()
         doggies.addAll(list)
         requestModelBuild()
     }
 
-    private val doggies: CopyOnWriteArrayList<String> = CopyOnWriteArrayList()
+    private var doggies: CopyOnWriteArrayList<String> = CopyOnWriteArrayList()
 
     override fun buildModels() {
-        val models: ArrayList<DoggieItemModel_> = ArrayList()
+
+        var models: ArrayList<DoggieItemModel_> = ArrayList()
 
         if (doggies.isNotEmpty()) {
-
-            doggies.map {
+            doggies.forEachIndexed{ index, item ->
                 models.add(
                     DoggieItemModel_()
-                        .id(it)
-                        .url(it)
+                        .id("carousel_item_id_$index")
+                        .url(item)
+                        .doggieName("${this@DoggieController.context.getString(R.string.dog)} ${index + 1}")
+                        .listener {
+                            this@DoggieController.navController.navigate(R.id.action_searchFragment2_to_searchOneFragment)
+                        }
                 )
             }
+
             group {
                 id("group")
                 layout(R.layout.group_layout)
@@ -43,6 +51,7 @@ class DoggieController(
                     numViewsToShowOnScreen(2f)
                     paddingDp(4)
                 }
+                shouldSaveViewState(true)
                 spanSizeOverride { _, _, _ -> 2 }
             }
 
@@ -53,11 +62,15 @@ class DoggieController(
                 spanSizeOverride { _, _, _ -> 2 }
             }
 
-            doggies.map {
+            doggies.forEachIndexed { index, item ->
                 doggieItem {
-                    id(it)
-                    url(it)
+                    id("grid_id_$index")
+                    url(item)
+                    doggieName("${this@DoggieController.context.getString(R.string.dog)} ${index+ 1}")
                     spanSizeOverride { _, _, _ -> 1 }
+                    listener {
+                        this@DoggieController.navController.navigate(R.id.action_searchFragment2_to_searchOneFragment)
+                    }
                 }
             }
         }

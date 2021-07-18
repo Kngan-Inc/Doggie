@@ -2,8 +2,7 @@
 <com.doggie.app.util.NestedScrollableHost xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/sliderViewGroup"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/app_margin">
+    android:layout_height="wrap_content">
 
     <ViewStub
         android:layout_width="match_parent"

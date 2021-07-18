@@ -14,7 +14,7 @@ interface AppService {
         @Query("size") size: Int = 10
     ): Response<PassengersResponse>
 
-    @GET("breed/hound/images/random/30")
+    @GET("breed/hound/images/random/10")
     suspend fun getDoggie(): Response<BaseClass<ArrayList<String>>>
 
 }

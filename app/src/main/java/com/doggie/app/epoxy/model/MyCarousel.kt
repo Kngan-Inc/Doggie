@@ -20,7 +20,7 @@ class MyCarousel : Carousel {
     override fun isSaveEnabled(): Boolean = true
 
     override fun createLayoutManager(): LayoutManager {
-        return LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        return LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
     }
 
 }

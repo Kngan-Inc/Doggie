@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.doggie.app.R
 import com.doggie.app.databinding.FragmentSearchBinding
@@ -21,12 +22,15 @@ class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
     private val controller by lazy {
-        DoggieController(context = requireContext())
+        DoggieController(
+            context = requireContext(),
+            navController = findNavController()
+        )
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        statusBar.light(true).color(Color.TRANSPARENT)
+        controller.onRestoreInstanceState(savedInstanceState)
     }
 
     override fun onCreateView(
@@ -35,6 +39,11 @@ class SearchFragment : Fragment() {
     ): View {
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        controller.onSaveInstanceState(outState)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -61,7 +70,6 @@ class SearchFragment : Fragment() {
                 MotionToast.LONG_DURATION,
                 ResourcesCompat.getFont(requireContext(), R.font.helvetica_regular),
             )
-
         })
     }
 
@@ -73,5 +81,12 @@ class SearchFragment : Fragment() {
         binding.recyclerView.layoutManager = layoutManager
         binding.recyclerView.setController(controller = controller)
         binding.recyclerView.addItemDecoration(ItemDecoration(spanCount, 12, true))
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding.recyclerView.setDelayMsWhenRemovingAdapterOnDetach(0)
+        binding.recyclerView.adapter = null
+        _binding = null
     }
 }

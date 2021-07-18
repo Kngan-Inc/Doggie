@@ -9,7 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class SearchViewModel : ViewModel() {
-    var doggies: MutableLiveData<ArrayList<String>> = MutableLiveData()
+    var doggies: MutableLiveData<ArrayList<String>> = MutableLiveData(ArrayList())
     var errorMessage: MutableLiveData<String> = MutableLiveData()
 
     init {
@@ -17,6 +17,9 @@ class SearchViewModel : ViewModel() {
     }
 
     private fun getDoggie() {
+        if(doggies.value?.isNotEmpty() == true) {
+            return
+        }
         viewModelScope.launch(Dispatchers.IO) {
             when (val response = DoggieApp.mainRepository.getDoggie()) {
                 is ResultOf.Success -> {
