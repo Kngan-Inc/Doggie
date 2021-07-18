@@ -1,4 +1,4 @@
-package com.doggie.app
+package com.doggie.app.util
 
 import android.content.Context
 import android.os.Bundle

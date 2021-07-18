@@ -7,25 +7,25 @@
 
     <keep_state_fragment
         android:id="@+id/searchFragment"
-        android:name="com.doggie.app.view.SearchContainerFragment"
+        android:name="com.doggie.app.view.search.SearchContainerFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search_container" />
 
     <keep_state_fragment
         android:id="@+id/chatFragment"
-        android:name="com.doggie.app.view.ChatContainerFragment"
+        android:name="com.doggie.app.view.chat.ChatContainerFragment"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat_container" />
 
     <keep_state_fragment
         android:id="@+id/dataFragment"
-        android:name="com.doggie.app.view.DataFragment"
+        android:name="com.doggie.app.view.data.DataFragment"
         android:label="fragment_data"
         tools:layout="@layout/fragment_data" />
 
     <keep_state_fragment
         android:id="@+id/settingFragment"
-        android:name="com.doggie.app.view.SettingFragment"
+        android:name="com.doggie.app.view.setting.SettingFragment"
         android:label="fragment_setting"
         tools:layout="@layout/fragment_setting" />
 

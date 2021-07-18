@@ -13,6 +13,9 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="android:fontFamily">@font/krasar_medium</item>
+
+        <item name="bottomSheetDialogTheme">@style/Style.App.AppBottomSheetDialogTheme</item>
+
     </style>
 
     <style name="Style.App.BodyTitle" parent="@style/Widget.MaterialComponents.TextView">
@@ -27,6 +30,14 @@
     <style name="Style.App.Button" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">@color/color_states_material_button</item>
         <item name="rippleColor">@android:color/transparent</item>
+    </style>
+
+    <style name="Style.App.AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Style.App.AppModalStyle</item>
+    </style>
+
+    <style name="Style.App.AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/shape_dialog</item>
     </style>
 
 </resources>

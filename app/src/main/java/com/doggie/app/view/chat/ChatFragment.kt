@@ -1,4 +1,4 @@
-package com.doggie.app.view
+package com.doggie.app.view.chat
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.doggie.app.databinding.FragmentChatBinding
+import com.doggie.app.view.data.DataViewModel
 
 class ChatFragment : Fragment() {
 

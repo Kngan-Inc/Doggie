@@ -8,13 +8,13 @@ import com.airbnb.epoxy.group
 import com.doggie.app.R
 import com.doggie.app.epoxy.model.DoggieItemModel_
 import com.doggie.app.epoxy.model.doggieItem
-import com.doggie.app.epoxy.model.myCarousel
 import com.doggie.app.epoxy.model.titleView
 import java.util.concurrent.CopyOnWriteArrayList
 
 class DoggieController(
     private var context: Context,
-    private var navController: NavController
+    private var navController: NavController,
+    private var buttonListener: (String) -> Unit,
 ) : EpoxyController() {
 
     fun submitList(list: ArrayList<String>) {
@@ -27,7 +27,7 @@ class DoggieController(
 
     override fun buildModels() {
 
-        var models: ArrayList<DoggieItemModel_> = ArrayList()
+        val models: ArrayList<DoggieItemModel_> = ArrayList()
 
         if (doggies.isNotEmpty()) {
             doggies.forEachIndexed{ index, item ->
@@ -38,6 +38,9 @@ class DoggieController(
                         .doggieName("${this@DoggieController.context.getString(R.string.dog)} ${index + 1}")
                         .listener {
                             this@DoggieController.navController.navigate(R.id.action_searchFragment2_to_searchOneFragment)
+                        }
+                        .buttonListener {
+                            this@DoggieController.buttonListener(item)
                         }
                 )
             }
@@ -70,6 +73,9 @@ class DoggieController(
                     spanSizeOverride { _, _, _ -> 1 }
                     listener {
                         this@DoggieController.navController.navigate(R.id.action_searchFragment2_to_searchOneFragment)
+                    }
+                    buttonListener {
+                        this@DoggieController.buttonListener(item)
                     }
                 }
             }

@@ -1,4 +1,4 @@
-package com.doggie.app.view
+package com.doggie.app.view.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,16 +7,20 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.doggie.app.R
 
-class ChatContainerFragment : Fragment() {
+class SearchContainerFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_chat_container, container, false)
+        return inflater.inflate(R.layout.fragment_search_container, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
     }
 
     companion object {
-        fun newInstance() = ChatContainerFragment()
+        fun newInstance() = SearchContainerFragment()
     }
 }

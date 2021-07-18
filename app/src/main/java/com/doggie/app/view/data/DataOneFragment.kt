@@ -1,4 +1,4 @@
-package com.doggie.app.view
+package com.doggie.app.view.data
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -8,24 +8,24 @@ import android.view.View
 import android.view.ViewGroup
 import com.doggie.app.R
 
-class ChatOneFragment : Fragment() {
+class DataOneFragment : Fragment() {
 
     companion object {
-        fun newInstance() = ChatOneFragment()
+        fun newInstance() = DataOneFragment()
     }
 
-    private lateinit var viewModel: ChatOneViewModel
+    private lateinit var viewModel: DataOneViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_chat_one, container, false)
+        return inflater.inflate(R.layout.fragment_data_one, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ChatOneViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(DataOneViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

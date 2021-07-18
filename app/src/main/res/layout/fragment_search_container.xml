@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.SearchContainerFragment">
+    tools:context=".view.search.SearchContainerFragment">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/search_fragment_container"

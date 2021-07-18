@@ -1,4 +1,4 @@
-package com.doggie.app.view
+package com.doggie.app.view.data
 
 import android.os.Bundle
 import android.view.LayoutInflater

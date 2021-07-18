@@ -1,4 +1,4 @@
-package com.doggie.app.view
+package com.doggie.app.view.search
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle

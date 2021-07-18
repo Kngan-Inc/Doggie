@@ -1,7 +1,7 @@
-package com.doggie.app.view
+package com.doggie.app.view.chat
 
 import androidx.lifecycle.ViewModel
 
-class SettingViewModel : ViewModel() {
+class ChatOneViewModel : ViewModel() {
     // TODO: Implement the ViewModel
 }

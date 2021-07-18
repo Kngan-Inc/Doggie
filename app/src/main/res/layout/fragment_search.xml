@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".view.SearchFragment">
+    tools:context=".view.search.SearchFragment">
+
 
     <com.airbnb.epoxy.EpoxyRecyclerView
         android:id="@+id/recyclerView"
@@ -14,4 +15,8 @@
         android:clipToPadding="false"
         tools:listitem="@layout/component_doggie" />
 
-</FrameLayout>
+<!--    <include-->
+<!--        android:id="@+id/bottomSheetView"-->
+<!--        layout="@layout/bottom_sheet_persistent" />-->
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -7,17 +7,31 @@
 
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.doggie.app.view.SearchFragment"
+        android:name="com.doggie.app.view.search.SearchFragment"
         android:label="@string/search"
         tools:layout="@layout/fragment_search">
         <action
             android:id="@+id/action_searchFragment2_to_searchOneFragment"
-            app:destination="@id/searchOneFragment" />
+            app:destination="@id/searchOneFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right" />
+        <action
+            android:id="@+id/action_searchFragment_to_myBottomFragment"
+            app:destination="@id/myBottomFragment" />
+
     </fragment>
 
     <fragment
         android:id="@+id/searchOneFragment"
-        android:name="com.doggie.app.view.SearchOneFragment"
+        android:name="com.doggie.app.view.search.SearchOneFragment"
         android:label="fragment search one"
         tools:layout="@layout/fragment_search_one" />
+
+    <dialog
+        android:id="@+id/myBottomFragment"
+        android:name="com.doggie.app.view.chat.MyBottomSheetDialogFragment"
+        tools:layout="@layout/fragment_bottom_sheet_dialog" />
+
 </navigation>

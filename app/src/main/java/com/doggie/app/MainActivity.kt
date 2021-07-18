@@ -6,6 +6,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.plusAssign
 import androidx.navigation.ui.setupWithNavController
 import com.doggie.app.databinding.ActivityMainBinding
+import com.doggie.app.util.KeepStateNavigator
 
 class MainActivity : DoggieActivity() {
 
