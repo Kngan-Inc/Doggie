@@ -13,10 +13,9 @@
         android:layout_margin="@dimen/app_margin"
         android:background="@drawable/corner_view" />
 
-    <ListView
-        android:id="@+id/listViewOptions"
+    <com.airbnb.epoxy.EpoxyRecyclerView
+        android:id="@+id/listRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/component_title" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>

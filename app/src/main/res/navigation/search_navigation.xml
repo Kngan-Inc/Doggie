@@ -32,6 +32,14 @@
     <dialog
         android:id="@+id/myBottomFragment"
         android:name="com.doggie.app.view.search.MyBottomSheetDialogFragment"
-        tools:layout="@layout/fragment_bottom_sheet_dialog" />
+        tools:layout="@layout/fragment_bottom_sheet_dialog">
+        <action
+            android:id="@+id/action_myBottomFragment_to_searchOneFragment"
+            app:destination="@id/searchOneFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right" />
+    </dialog>
 
 </navigation>
