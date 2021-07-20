@@ -24,6 +24,9 @@ abstract class DoggieItemModel : EpoxyModelWithHolder<DoggieItemModel.SelectionH
     @EpoxyAttribute
     lateinit var buttonListener: () -> Unit
 
+    @EpoxyAttribute
+    lateinit var removeListener: () -> Unit
+
     override fun bind(holder: SelectionHolder) {
         super.bind(holder)
         holder.binding.coilImageView
@@ -35,6 +38,7 @@ abstract class DoggieItemModel : EpoxyModelWithHolder<DoggieItemModel.SelectionH
         holder.binding.doggieNameTextView.text = doggieName
         holder.binding.root.setOnClickListener { listener() }
         holder.binding.buttonDoggie.setOnClickListener { buttonListener() }
+        holder.binding.buttonRemove.setOnClickListener{ removeListener() }
     }
 
     override fun shouldSaveViewState(): Boolean = true

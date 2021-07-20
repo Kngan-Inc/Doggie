@@ -11,6 +11,7 @@
     android:padding="@dimen/app_margin">
 
     <ImageView
+        android:id="@+id/buttonRemove"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"

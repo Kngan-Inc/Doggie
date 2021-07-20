@@ -42,6 +42,10 @@ class DoggieController(
                         .buttonListener {
                             this@DoggieController.buttonListener(item)
                         }
+                        .removeListener {
+                            doggies.remove(item)
+                            requestModelBuild()
+                        }
                 )
             }
 
@@ -76,6 +80,10 @@ class DoggieController(
                     }
                     buttonListener {
                         this@DoggieController.buttonListener(item)
+                    }
+                    removeListener {
+                        this@DoggieController.doggies.remove(item)
+                        this@DoggieController.requestModelBuild()
                     }
                 }
             }
