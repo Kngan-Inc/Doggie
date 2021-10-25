@@ -17,4 +17,7 @@ interface AppService {
     @GET("breed/hound/images/random/10")
     suspend fun getDoggie(): Response<BaseClass<ArrayList<String>>>
 
+    @GET("Hello")
+    suspend fun getHello(): Response<String>
+
 }
