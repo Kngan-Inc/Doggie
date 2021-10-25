@@ -19,6 +19,5 @@ interface AppService {
 
     @GET("Hello")
     suspend fun getHello(): Response<String>
-
-
+    //
 }
