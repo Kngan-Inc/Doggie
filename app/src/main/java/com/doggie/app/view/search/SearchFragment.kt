@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
@@ -74,17 +75,9 @@ class SearchFragment : Fragment() {
 
     private fun initObservation() {
         viewModel.doggies.observe(viewLifecycleOwner, controller::submitList)
-        viewModel.errorMessage.observe(viewLifecycleOwner, {
-            MotionToast.createToast(
-                requireActivity(),
-                "Failed ☹️",
-                it,
-                MotionToast.TOAST_ERROR,
-                MotionToast.GRAVITY_BOTTOM,
-                MotionToast.LONG_DURATION,
-                ResourcesCompat.getFont(requireContext(), R.font.helvetica_regular),
-            )
-        })
+        viewModel.errorMessage.observe(viewLifecycleOwner) {
+            Toast.makeText(requireContext(), it.toString(), Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun initView() {
