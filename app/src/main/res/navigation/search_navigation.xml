@@ -25,9 +25,9 @@
 
     <fragment
         android:id="@+id/searchOneFragment"
-        android:name="com.doggie.app.view.search.SearchOneFragment"
+        android:name="com.doggie.app.view.search.detail.DogDetailFragment"
         android:label="fragment search one"
-        tools:layout="@layout/fragment_search_one" />
+        tools:layout="@layout/fragment_dog_detail" />
 
     <dialog
         android:id="@+id/myBottomFragment"

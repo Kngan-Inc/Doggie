@@ -2,6 +2,7 @@ package com.doggie.app
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
@@ -9,6 +10,7 @@ import androidx.navigation.plusAssign
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.doggie.app.databinding.ActivityMainBinding
+import com.doggie.app.util.BottomNavigationViewBehavior
 import com.doggie.app.util.KeepStateNavigator
 import java.lang.Exception
 

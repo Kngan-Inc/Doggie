@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FF2F2F"
-    tools:context=".view.search.SearchOneFragment">
+    tools:context=".view.search.detail.DogDetailFragment">
 
     <TextView
         android:layout_width="match_parent"
