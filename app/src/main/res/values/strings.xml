@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">Doggie</string>
+    <string name="app_name">ឆ្កែ</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="search">Search</string>
-    <string name="comment">Comment</string>
-    <string name="data">Data</string>
-    <string name="setting">Setting</string>
+    <string name="search">ស្វែងរក</string>
+    <string name="comment">មតិ</string>
+    <string name="data">ទិន្នន័យ</string>
+    <string name="setting">ការកំណត់</string>
     <string name="dog">ឆ្កែ</string>
     <string name="follow">តាមឆ្កែនេះ</string>
-    <string name="top_suggestion">យោបល់កំពូលៗ</string>
+    <string name="top_suggestion">ការណែនាំឆ្កែកំពូលៗ</string>
 </resources>
