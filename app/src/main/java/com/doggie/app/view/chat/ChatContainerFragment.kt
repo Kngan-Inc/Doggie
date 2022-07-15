@@ -19,4 +19,5 @@ class ChatContainerFragment : Fragment() {
     companion object {
         fun newInstance() = ChatContainerFragment()
     }
+
 }

@@ -3,20 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="false"
     tools:context=".view.search.SearchFragment">
-
 
     <com.airbnb.epoxy.EpoxyRecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:itemCount="20"
         android:clipToPadding="false"
+        tools:itemCount="20"
         tools:listitem="@layout/component_doggie" />
-
-<!--    <include-->
-<!--        android:id="@+id/bottomSheetView"-->
-<!--        layout="@layout/bottom_sheet_persistent" />-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

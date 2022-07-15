@@ -9,21 +9,23 @@ import com.doggie.app.R
 import com.doggie.app.epoxy.model.DoggieItemModel_
 import com.doggie.app.epoxy.model.doggieItem
 import com.doggie.app.epoxy.model.titleView
+import com.doggie.app.model.Dog
 import java.util.concurrent.CopyOnWriteArrayList
 
 class DoggieController(
     private var context: Context,
     private var navController: NavController,
-    private var buttonListener: (String) -> Unit,
+    private var buttonListener: (Dog) -> Unit,
+    private var removeListener: (Dog) -> Unit,
 ) : EpoxyController() {
 
-    fun submitList(list: ArrayList<String>) {
+    fun submitList(list: ArrayList<Dog>) {
         doggies.clear()
         doggies.addAll(list)
         requestModelBuild()
     }
 
-    private var doggies: CopyOnWriteArrayList<String> = CopyOnWriteArrayList()
+    private var doggies: CopyOnWriteArrayList<Dog> = CopyOnWriteArrayList()
 
     override fun buildModels() {
 
@@ -34,7 +36,7 @@ class DoggieController(
                 models.add(
                     DoggieItemModel_()
                         .id("carousel_item_id_$index")
-                        .url(item)
+                        .url(item.dogProfile)
                         .doggieName("${this@DoggieController.context.getString(R.string.dog)} ${index + 1}")
                         .listener {
                             this@DoggieController.navController.navigate(R.id.action_searchFragment2_to_searchOneFragment)
@@ -44,6 +46,7 @@ class DoggieController(
                         }
                         .removeListener {
                             doggies.remove(item)
+                            this@DoggieController.removeListener(item)
                             requestModelBuild()
                         }
                 )
@@ -72,7 +75,7 @@ class DoggieController(
             doggies.forEachIndexed { index, item ->
                 doggieItem {
                     id("grid_id_$index")
-                    url(item)
+                    url(item.dogProfile)
                     doggieName("${this@DoggieController.context.getString(R.string.dog)} ${index+ 1}")
                     spanSizeOverride { _, _, _ -> 1 }
                     listener {
